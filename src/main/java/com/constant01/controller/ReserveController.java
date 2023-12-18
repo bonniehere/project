@@ -33,6 +33,13 @@ public class ReserveController {
 		return "home/reserveNew/resvOnline";
 	
 	}
+	@RequestMapping(value = "home/reserveNew/resvOnline.do", method = RequestMethod.POST)
+	// 온라인 예약 사이트로 이동                       기본생성자 호출
+	public String resvOnline2 () {
+		
+		return "home/reserveNew/resvOnline";
+	
+	}
 	
 	@RequestMapping(value = "home/reserveNew/stepResvInfo.do", method = RequestMethod.POST)
 	// 본인/대리인 예약 사이트로 이동                기본생성자 호출
@@ -40,14 +47,42 @@ public class ReserveController {
 		return "home/reserveNew/stepResvInfo";
 	
 	}
-	
-	@RequestMapping(value = "home/reserveNew/step1Pop.do", method = RequestMethod.POST)
+	@RequestMapping(value = "home/reserveNew/step1Pop.do", method = RequestMethod.GET)
 	// 진료과 선택 사이트로 이동                기본생성자 호출
 	public String step1() {
 		return "home/reserveNew/step1Pop";
 	
 	}
+	@RequestMapping(value = "home/reserveNew/step1Pop.do", method = RequestMethod.POST)
+	// 진료과 선택 사이트로 이동                기본생성자 호출
+	public String step11() {
+		return "home/reserveNew/step1Pop";
 	
+	}
+	@RequestMapping(value = "home/reserveNew/step2Pop.do", method = RequestMethod.GET)
+	// 진료과 선택 사이트로 이동                기본생성자 호출
+	public String step2() {
+		return "home/reserveNew/step2Pop";
+	
+	}
+	@RequestMapping(value = "home/reserveNew/step2Pop.do", method = RequestMethod.POST)
+	// 진료과 선택 사이트로 이동                기본생성자 호출
+	public String step22() {
+		return "home/reserveNew/step2Pop";
+	
+	}
+	@RequestMapping(value = "home/reserveNew/step3Pop.do", method = RequestMethod.GET)
+	// 진료과 선택 사이트로 이동                기본생성자 호출
+	public String step3() {
+		return "home/reserveNew/step3Pop";
+	
+	}
+	@RequestMapping(value = "home/reserveNew/step3Pop.do", method = RequestMethod.POST)
+	// 진료과 선택 사이트로 이동                기본생성자 호출
+	public String step33() {
+		return "home/reserveNew/step3Pop";
+	
+	}
 
 	
 }

@@ -1,3 +1,4 @@
+<%@page import="com.constant01.model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,7 +26,9 @@
 <script type="text/javascript" src="../../../../resources/js/fullpage.js"></script>
 <script type="text/javascript" src="../../../../resources/js/scrolla.jquery.js"></script>
 <script type="text/javascript" src="../../../../resources/js/common.js"></script>
-
+<% 
+         MemberDTO member = (MemberDTO)session.getAttribute("login");
+%>
 
 <!-- css 내가 적용한 거 -->
 <link type="text/css" rel="stylesheet" href="../../../../resources/css/step1Pop.css"/>
@@ -35,7 +38,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		if($("#resvIdx").val() != ""){
-			$("#phoneDt").text("010-5502-0745");
+			$("#phoneDt").text(member.getBirthDt());
 			$("#userBirthDt").val("2001-06-09");
 			$("#brdDt").text("2001-06-09");
 			$("#gender").val("F");
@@ -220,16 +223,16 @@
 	<input type="hidden" id="hspCd" name="hspCd" value="G">
 	<input type="hidden" id="memYn" name="memYn" value="Y">
 
-	<input type="hidden" id="userType" name="userType" value="undefined">
+	<input type="hidden" id="userType" name="userType" value="<%=member.getUserStat() %>">
 	<input type="hidden" id="resvType" name="resvType" value="me">
-	<input type="hidden" id="userNm" name="userNm" value="강민채">
-	<input type="hidden" id="gender" name="gender" value="F">
+	<input type="hidden" id="userNm" name="userNm" value="<%=member.getUserNm() %>">
+	<input type="hidden" id="gender" name="gender" value="<%=member.getSex() %>">
 	<input type="hidden" id="ptNo" name="ptNo" value="00151083">
-	<input type="hidden" id="userBirthDt" name="userBirthDt" value="2001-06-09">
-	<input type="hidden" id="phone" name="phone" value="010-5502-0745">
-	<input type="hidden" id="zipCd" name="zipCd" value="">
-	<input type="hidden" id="addr" name="addr" value="">
-	<input type="hidden" id="detlAddr" name="detlAddr" value="">
+	<input type="hidden" id="userBirthDt" name="userBirthDt" value="<%=member.getBirthDt() %>">
+	<input type="hidden" id="phone" name="phone" value="<%=member.getTelNo() %>">
+	<input type="hidden" id="zipCd" name="zipCd" value="<%=member.getZipCd() %>">
+	<input type="hidden" id="addr" name="addr" value="<%=member.getAddr() %>">
+	<input type="hidden" id="detlAddr" name="detlAddr" value="<%=member.getDetlAddr() %>">
 	
 	
 	
@@ -289,16 +292,16 @@
 			<div class="reservation_content">
 				<!-- 환자정보 -->
 				<div class="patient_wrap">
-					<p class="p_name">김아무개</p>
-					<p class="p_num">환자번호 <span>00151083</span></p>
+					<p class="p_name"><%=member.getUserNm() %></p>
+					<p class="p_num">유저ID <span><%=member.getUserId() %></span></p>
 					<div class="dec_list_wrap">
 						<dl>
 							<dt class="">연락처</dt>
-							<dd class="p_phone" id="phoneDt">010-5555-8888</dd>
+							<dd class="p_phone" id="phoneDt"><%=member.getTelNo() %></dd>
 						</dl>
 						<dl>
 							<dt>생년월일</dt>
-							<dd class="p_birth" id="brdDt">2038-06-09</dd>
+							<dd class="p_birth" id="brdDt"><%=member.getBirthDt() %></dd>
 						</dl>
 						
 						<!-- 안 쓸래이이아ㅓ리ㅏㅓㄴ 
@@ -652,7 +655,7 @@
 				<!-- 버튼 -->
 	            <div class="reservation_btn_wrap fix">
 	            	<a href="javascript:void(0);" class="btn_step_prev btnClose"><span>취소</span></a>
-	                <a href="javascript:void(0);" class="btn_step_next" onclick="location.href='http://localhost:8080//home/reserveNew/step2Pop.do'"><span>다음</span></a>
+	                <a href="javascript:void(0);" class="btn_step_next" onclick="location.href='http://localhost:8080/home/reserveNew/step2Pop.do'"><span>다음</span></a>
 				</div>
 	            <!-- // 버튼 -->
 			</div>
