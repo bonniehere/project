@@ -1,3 +1,4 @@
+<%@page import="com.constant01.model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,8 +27,10 @@
 	<script type="text/javascript" src="../../../../resources/js/fullpage.js"></script>
 	<script type="text/javascript" src="../../../../resources/js/scrolla.jquery.js"></script>
 	<script type="text/javascript" src="../../../../resources/js/common.js"></script>
-	<script type="text/javascript" src="/plug-in/c3r/CommonUtil.c3r-custom.js"></script>
-	
+	<script type="text/javascript" src="../../../../resources/js/CommonUtil.c3r-custom.js"></script>
+	<% 
+         MemberDTO member = (MemberDTO)session.getAttribute("login");
+	%>
 	<!-- <link type="text/css" rel="stylesheet" href="../../../../resources/css/constant01_reserve2.css">
 	
 	나중에 삭제할 예정
@@ -289,6 +292,7 @@
 		<input type="hidden" id="hspCd" name="hspCd" value="G">
 		<input type="hidden" id="memYn" name="memYn" value="Y">
 		<!-- 예약자 정보 -->
+		<!-- 
 		<input type="hidden" id="userType" name="userType" value="undefined">
 		<input type="hidden" id="resvType" name="resvType" value="me">
 		<input type="hidden" id="userNm" name="userNm" value="김아무개">
@@ -299,6 +303,17 @@
 		<input type="hidden" id="zipCd" name="zipCd" value="">
 		<input type="hidden" id="addr" name="addr" value="">
 		<input type="hidden" id="detlAddr" name="detlAddr" value="">
+		 -->
+		 <input type="hidden" id="userType" name="userType" value="<%=member.getUserStat() %>">
+		<input type="hidden" id="resvType" name="resvType" value="me">
+		<input type="hidden" id="userNm" name="userNm" value="<%=member.getUserNm() %>">
+		<input type="hidden" id="gender" name="gender" value="<%=member.getSex() %>">
+		<input type="hidden" id="ptNo" name="ptNo" value="00151083">
+		<input type="hidden" id="userBirthDt" name="userBirthDt" value="<%=member.getBirthDt() %>">
+		<input type="hidden" id="phone" name="phone" value="<%=member.getTelNo() %>">
+		<input type="hidden" id="zipCd" name="zipCd" value="<%=member.getZipCd() %>">
+		<input type="hidden" id="addr" name="addr" value="<%=member.getAddr() %>">
+		<input type="hidden" id="detlAddr" name="detlAddr" value="<%=member.getDetlAddr() %>"> 
 		<!-- 진협 예약시 추가되는 파라메타  -->
 		<input type="hidden" id="ssnNo1" name="ssnNo1" value="">
 		<input type="hidden" id="ssnNo2" name="ssnNo2" value="">
@@ -329,18 +344,18 @@
 
 	               <!-- 환자정보 -->
 	               <div class="patient_wrap">
-	                   <p class="p_name">강민채</p>
-	                   <p class="p_num">환자번호 <span>00151083</span></p>
+	                   <p class="p_name"><%=member.getUserNm() %></p>
+	                   <p class="p_num">유저ID <span><%=member.getUserId() %></span></p>
 
 	                   <div class="dec_list_wrap">
 	                       <dl>
 	                           <dt class="">연락처</dt>
-	                           <dd class="p_phone">010-5502-0745</dd>
+	                           <dd class="p_phone"><%=member.getTelNo() %></dd>
 	                       </dl>
 	                       <dl>
 	                            <dt>생년월일</dt>
 								<dd class="p_birth">
-									2001-06-09
+									<%=member.getBirthDt() %>
 								</dd>
 	                       </dl>
 	                       <!-- <dl>
